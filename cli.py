@@ -1,10 +1,11 @@
 import requests
+from requests.models import Response
 
 def stats():
-    print("stats")
+    response: Response = requests.get('http://127.0.0.1:5000/stats')
 
 def add(s: str):
-    print("add")
+    response: Response = requests.post('http://127.0.0.1:5000/add', json={"string": s})
 
 def cli_runner():
     while True:
@@ -15,7 +16,7 @@ def cli_runner():
         elif (input_result.lower() == "stats"):
             stats()
         else:
-            add("hi")
+            add(input_result)
 
 if __name__ == '__main__':
     cli_runner()
