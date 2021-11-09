@@ -44,3 +44,10 @@ class Seen_Strings:
             csv_writer = csv.writer(csv_file, delimiter=',')
             for s in self.strings:
                 csv_writer.writerow([s, self.strings[s]])
+
+    def from_csv(self, csv_path: str) -> None:
+        self.strings.clear()
+        with open(csv_path) as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+                for row in csv_reader:
+                    self.strings[row[0]] = int(row[1])
