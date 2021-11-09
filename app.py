@@ -3,7 +3,7 @@ from Seen_Strings import Seen_Strings
 
 app = Flask(__name__)
 
-seen_strings: Seen_Strings = Seen_Strings()
+seen_strings: Seen_Strings = Seen_Strings('test_csv.csv')
 
 @app.route("/stats", methods=['GET'])
 def stats():

@@ -1,14 +1,22 @@
+import csv
 from typing import Dict
 
 class Seen_Strings:
-    def __init__(self):
-        self.strings: Dict[str, int]                = {}
+    def __init__(self, csv_path=None):
+        if csv_path == None:
+            self.strings: Dict[str, int] = {}
+        else:
+            self.strings: Dict[str, int] = {}
+            with open(csv_path) as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+                for row in csv_reader:
+                    self.strings[row[0]] = int(row[1]) # check this
+
         # todo running record longest and most popular? better performance
         # self.longest_str: str                       = ''
         # self.most_popular_str: Dict[str, int]       = {}
-        # todo init from an existing dict?
-    
-    def add(self, s: str):
+
+    def add(self, s: str) -> None:
         if s in self.strings:
             self.strings[s] += 1
         else:
