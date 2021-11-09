@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Dict
 
 class Seen_Strings:
     def __init__(self):
@@ -17,6 +17,9 @@ class Seen_Strings:
             #     self.longest_str = s
     
     def stats(self) -> Dict[str, str]:
+        if len(self.strings) == 0:
+            return {'NOT AVAILABLE': 'No strings added, stats are not available'}
+        
         all_strings: str = ''
         for s in self.strings:
             all_strings += ('"' + s + '": ' + str(self.strings[s]) + ', ')
