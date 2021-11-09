@@ -13,3 +13,4 @@ def stats():
 def add_string():
     s = request.json["string"]
     seen_strings.add(s)
+    return 'ok'

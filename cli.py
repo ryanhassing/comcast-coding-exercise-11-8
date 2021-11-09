@@ -3,6 +3,7 @@ from requests.models import Response
 
 def stats():
     response: Response = requests.get('http://127.0.0.1:5000/stats')
+    print(response.text)
 
 def add(s: str):
     response: Response = requests.post('http://127.0.0.1:5000/add', json={"string": s})
