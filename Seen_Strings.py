@@ -1,8 +1,9 @@
 import csv
+import json
 from typing import Dict
 
 class Seen_Strings:
-    def __init__(self, csv_path=None):
+    def __init__(self, csv_path: str = None):
         if csv_path == None:
             self.strings: Dict[str, int] = {}
         else:
@@ -28,10 +29,7 @@ class Seen_Strings:
         if len(self.strings) == 0:
             return {'NOT AVAILABLE': 'No strings added, stats are not available'}
         
-        all_strings: str = ''
-        for s in self.strings:
-            all_strings += ('"' + s + '": ' + str(self.strings[s]) + ', ')
-
+        all_strings = json.dumps(self.strings)
         most_popular: str = max(self.strings, key=self.strings.get)
         longest: str = max(self.strings, key=len)
 
@@ -40,3 +38,9 @@ class Seen_Strings:
             "most popular string": most_popular,
             "longest string": longest
         }
+    
+    def to_csv(self, csv_path: str) -> None:
+        with open(csv_path, 'w', newline='') as csv_file:
+            csv_writer = csv.writer(csv_file, delimiter=',')
+            for s in self.strings:
+                csv_writer.writerow([s, self.strings[s]])

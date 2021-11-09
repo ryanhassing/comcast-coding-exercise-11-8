@@ -14,3 +14,9 @@ def add_string():
     s = request.json["string"]
     seen_strings.add(s)
     return 'ok'
+
+@app.route("/csv", methods=['POST'])
+def to_csv():
+    csv_path = request.json["csv_path"]
+    seen_strings.to_csv(csv_path)
+    return 'ok'
