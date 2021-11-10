@@ -11,19 +11,13 @@ class Seen_Strings:
             with open(csv_path) as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=',')
                 for row in csv_reader:
-                    self.strings[row[0]] = int(row[1]) # check this
-
-        # todo running record longest and most popular? better performance
-        # self.longest_str: str                       = ''
-        # self.most_popular_str: Dict[str, int]       = {}
+                    self.strings[row[0]] = int(row[1])
 
     def add(self, s: str) -> None:
         if s in self.strings:
             self.strings[s] += 1
         else:
             self.strings[s] = 1
-            # if len(s) > len(self.longest_str):
-            #     self.longest_str = s
     
     def stats(self) -> Dict[str, str]:
         if len(self.strings) == 0:

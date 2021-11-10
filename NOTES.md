@@ -14,3 +14,10 @@ Sources consulted - I really just consulted library documentation
 * https://docs.python.org/3/library/csv.html
 * https://docs.python-requests.org/en/latest/
 * https://flask.palletsprojects.com/en/2.0.x/quickstart/
+
+Additional nice to have features
+* Escaping/replacing commas in the csv files - what happens if we try to save strings with commas to csv?
+  * Could fix this by replacing the comma with a special char when writing/reading csv. Maybe the csv module already has this capability
+* Checking for file existence, valid csv before reading from csv file
+* Maintain record of longest string, most popular - that way we only have to check if new string is longer than longest, or if string count is higher than current highest string count
+* Tests
